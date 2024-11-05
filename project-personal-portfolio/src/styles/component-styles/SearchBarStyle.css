@@ -1,0 +1,16 @@
+/* ESTILIZAÇÃO GERAL (TODAS AS PÁGINAS) ------------------------------ */
+#search-page-text {
+    color: #18191F;
+    font-size: 30px;
+    font-weight: 800;
+}
+
+#search-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+    height: 100%;
+}
