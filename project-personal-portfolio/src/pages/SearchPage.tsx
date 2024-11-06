@@ -1,15 +1,15 @@
 import React from 'react';
-import SearchBar from '../components/SearchBar';
+import SearchForm from '../components/SearchForm';
 
 const SearchPage: React.FC = () => {
     const handleSearch = (query: string) => {
         console.log("Buscando por:", query);
-        // Aqui você pode adicionar lógica para lidar com o termo de busca
+        
     };
 
     return (
         <div id='search-page-content'>
-            <SearchBar searchFunction={handleSearch} />
+            <SearchForm searchFunction={handleSearch} />
         </div>
     );
 };
