@@ -1,0 +1,12 @@
+/* ESTILIZAÇÃO GERAL ------------------------------------------------- */
+@import '../GlobalStyle.css';
+
+#my-history-content {
+    background-color: #508991 !important;
+    font-size: 100px;
+}
+
+#my-history-title {
+    
+    background-color: #508991 !important;
+}

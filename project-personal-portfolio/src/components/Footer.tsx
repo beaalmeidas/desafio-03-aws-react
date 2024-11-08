@@ -12,7 +12,7 @@ import youtubeLogoColor from '../assets/youtube-logo-color.svg';
 import youtubeLogoBlack from '../assets/youtube-logo-black.svg';
 
 
-const MyHistory: React.FC = () => {
+const Footer: React.FC = () => {
     const changeLogo = (event: React.MouseEvent<HTMLImageElement>, hoverSrc: string) => {
         const img = event.currentTarget as HTMLImageElement;
         img.src = hoverSrc;
@@ -75,5 +75,4 @@ const MyHistory: React.FC = () => {
     );
 };
 
-
-export default MyHistory;
+export default Footer;
