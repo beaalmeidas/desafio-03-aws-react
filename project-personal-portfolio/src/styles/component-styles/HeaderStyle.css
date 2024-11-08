@@ -1,0 +1,15 @@
+/* ESTILIZAÇÃO GERAL ------------------------------------------------- */
+@import '../GlobalStyle.css';
+
+
+#header-container {
+    background-color: #172A3A;
+}
+
+#navigation li {
+    font-size: 20px;
+}
+
+#navigation a {
+    text-decoration: none !important;
+}
