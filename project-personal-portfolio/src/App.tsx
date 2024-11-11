@@ -1,16 +1,20 @@
+// App.tsx
 import React from 'react';
-import './styles/GlobalStyle.css';
+import { UserProvider } from './context/UserContext'; // Certifique-se de que o caminho está correto
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import SearchPage from './pages/SearchPage';
-
+import PortfolioPage from './pages/PortfolioPage';
+import SearchPage from './pages/SearchPage'; // Importa sua página de busca
 
 const App: React.FC = () => {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<SearchPage />} />
-      </Routes>
-    </Router>
+    <UserProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<SearchPage />} />
+          <Route path="/portfolio" element={<PortfolioPage />} />
+        </Routes>
+      </Router>
+    </UserProvider>
   );
 };
 
