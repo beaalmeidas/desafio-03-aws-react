@@ -1,5 +1,8 @@
 import React from 'react';
 
+// CSS
+import '../styles/component-styles/FooterStyle.css';
+
 // Ícones
 import { FaLocationDot } from "react-icons/fa6";
 import instagramLogoColor from '../assets/instagram-logo-color.svg';
@@ -69,10 +72,12 @@ const Footer: React.FC = () => {
 
             <div id="footer-bottom">
                 <FaLocationDot />
+                <p>Brasil</p>
                 <p>&copy; 2024, All Rights By Compass UOL</p>
             </div>
         </div>
     );
 };
+
 
 export default Footer;
