@@ -1,8 +1,6 @@
 // SETUP DO FIREBASE PARA A AUTENTICAÇÃO
-
 import { initializeApp } from "firebase/app";
-//import { getAnalytics } from "firebase/analytics";
-import { getAuth, Auth } from "firebase/auth";
+import { getAuth, GithubAuthProvider, signInWithPopup } from "firebase/auth";
 
 // Configuração do Firebase
 const firebaseConfig = {
@@ -15,11 +13,9 @@ const firebaseConfig = {
   measurementId: "G-P72DWP0T7D",
 };
 
-// Inicialização do Firebase
-const app = initializeApp(firebaseConfig);
-//const analytics = getAnalytics(app);
-const auth: Auth = getAuth(app);
 
-export default app;
-export { firebaseConfig };
-export { auth };
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const provider = new GithubAuthProvider();
+
+export { auth, provider, signInWithPopup };

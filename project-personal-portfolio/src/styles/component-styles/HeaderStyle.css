@@ -37,7 +37,7 @@
 }
 
 #navigation ul li a:hover {
-    font-weight: bold;
+    color: #09BC8A;
 }
 
 /* Texto de log-in */
@@ -60,7 +60,7 @@
 }
 
 #login-button:hover {
-    font-weight: bold;
+    color: #09BC8A;
 }
 
 #login-icon {

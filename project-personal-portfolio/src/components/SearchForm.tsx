@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { FaArrowRight } from "react-icons/fa6";
 import { TbBrandGithubFilled } from "react-icons/tb";
-import axios from 'axios';
+import { auth, provider, signInWithPopup } from '../authentication/firebaseConfig';
+import { useUser } from '../context/useUser';
+import { useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import '../styles/component-styles/SearchFormStyle.css';
 
 interface SearchFormProps {
@@ -11,78 +15,47 @@ interface SearchFormProps {
 
 const SearchForm: React.FC<SearchFormProps> = ({ placeholder = "Digite o nome do usuário", searchFunction }) => {
   const [query, setQuery] = useState('');
-  const [userData, setUserData] = useState<any>(null);
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const { setUser } = useUser();
+  const navigate = useNavigate();
 
-  // Handle input change
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
   };
 
-  // Handle search
-  const handleSearch = async () => {
+  const handleSearch = () => {
     searchFunction(query);
-    try {
-      const response = await axios.get(`https://api.github.com/users/${query}`);
-      setUserData(response.data);
-      localStorage.setItem('githubUserData', JSON.stringify(response.data)); // Store data in localStorage
-    } catch (error) {
-      console.error("Error fetching GitHub user:", error);
-    }
   };
 
-  // GitHub login
   const handleGitHubLogin = async () => {
-    const clientId = "YOUR_GITHUB_CLIENT_ID";  // Replace with your GitHub OAuth Client ID
-    const redirectUri = "YOUR_REDIRECT_URI";   // Replace with your redirect URI
-    const scope = "user"; // Optional: Add other scopes based on your need
-
-    // Redirect to GitHub for OAuth login
-    window.location.href = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}`;
-  };
-
-  // Handle GitHub OAuth callback
-  const handleGitHubCallback = async (code: string) => {
-    const clientId = "YOUR_GITHUB_CLIENT_ID";
-    const clientSecret = "YOUR_GITHUB_CLIENT_SECRET";  // Securely store the secret in env variables
-
-    // Request the access token using the code
     try {
-      const response = await axios.post('https://github.com/login/oauth/access_token', {
-        client_id: clientId,
-        client_secret: clientSecret,
-        code: code,
-      }, {
-        headers: {
-          'Accept': 'application/json',
-        }
-      });
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
 
-      const accessToken = response.data.access_token;
+      const githubData = {
+        profilePicture: user.photoURL || "",
+        location: "Localização Exemplo",
+        email: user.email || "",
+        introduction: `Bem-vindo, ${user.displayName}!`,
+        description: "Esta é a descrição do usuário.",
+        githubUrl: user.providerData[0].uid,
+        linkedinUrl: "https://www.linkedin.com/in/username",
+      };
 
-      // Fetch user data with the access token
-      const userResponse = await axios.get('https://api.github.com/user', {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        }
-      });
+      setUser(githubData);
 
-      setIsLoggedIn(true);
-      setUserData(userResponse.data);
-      localStorage.setItem('githubUserData', JSON.stringify(userResponse.data)); // Store data in localStorage
+      localStorage.setItem('user', JSON.stringify(githubData));
+
+      toast.success("Login com GitHub realizado com sucesso!");
+
+      setTimeout(() => {
+        navigate('/portfolio');
+      }, 2000);
     } catch (error) {
-      console.error("Error with GitHub OAuth:", error);
+      console.error("Erro ao logar com o GitHub:", error);
+
+      toast.error("Erro ao tentar fazer login com o GitHub. Tente novamente.");
     }
   };
-
-  // Check for GitHub OAuth callback
-  React.useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const code = urlParams.get('code');
-    if (code) {
-      handleGitHubCallback(code);
-    }
-  }, []);
 
   return (
     <div id='search-page-container'>
@@ -109,20 +82,19 @@ const SearchForm: React.FC<SearchFormProps> = ({ placeholder = "Digite o nome do
 
       <div id='alternative-login'>
         <p id='alternative-login-text'>Acesse sua conta com</p>
-        
         <button id='github-login-button' onClick={handleGitHubLogin}>
           <TbBrandGithubFilled />
           GitHub
         </button>
       </div>
 
-      {userData && (
-        <div id="user-info">
-          <p><strong>{userData.name}</strong></p>
-          <p>{userData.bio}</p>
-          <p><a href={userData.html_url} target="_blank" rel="noopener noreferrer">Ver perfil no GitHub</a></p>
-        </div>
-      )}
+      <ToastContainer
+        autoClose={8000}
+        position="top-right"
+        hideProgressBar={false}
+        newestOnTop={true}
+        pauseOnFocusLoss={false}
+      />
     </div>
   );
 };
