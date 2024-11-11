@@ -18,10 +18,10 @@ const Header: React.FC = () => {
             </nav>
 
             <div id="login">
-                <button id="login-button">
-                    <BiLogIn size={20} />
+                <a id="login-button" href="">
+                    <BiLogIn id='login-icon' size={25} />
                     Entrar
-                </button>
+                </a>
             </div>
         </header>
     );
