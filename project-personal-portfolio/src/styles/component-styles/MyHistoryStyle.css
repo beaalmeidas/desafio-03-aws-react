@@ -1,3 +1,4 @@
+
 /* ESTILIZAÇÃO GERAL ------------------------------------------------- */
 @import '../GlobalStyle.css';
 
@@ -13,7 +14,7 @@
     margin-bottom: 70px;
 }
 
-/* Título do container e texto */
+/* Título e Caixa de Texto */
 #my-history-title {
     font-size: 40px;
     font-weight: bold;
@@ -30,4 +31,25 @@
 #my-history-title, #my-history-text {
     background-color: transparent;
     padding: 10px 20px;
+}
+
+/* Estilizando o input */
+#my-history-input {
+    background: transparent; 
+    border: none; 
+    outline: none; 
+    font-size: 22px; 
+    font-weight: 400; 
+    color: #fff; 
+    width: 100%; 
+    padding: 0; 
+    margin: 0; 
+    line-height: 1.5; 
+    cursor: pointer; 
+    text-align: center;
+}
+
+#my-history-input:focus {
+    border: none; 
+    outline: none; 
 }
