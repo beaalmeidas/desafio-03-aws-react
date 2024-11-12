@@ -68,6 +68,43 @@
     background-color: #09BC8A;
 }
 
+/* Sugestões de usuário */
+#suggestion-container {
+    position: fixed;
+    width: 30%;
+    margin-top: -5px;
+}
+
+.suggestions-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 5px 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    max-height: 200px;
+    overflow-y: auto;
+    position: absolute;
+    width: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.suggestions-list li {
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; 
+    color: #a4a4a4;
+}
+
+.suggestions-list li:hover {
+    background-color: #f0f0f0;
+}
+
+.suggestions-list li:active {
+    background-color: #e0e0e0;
+}
+
 
 /* LOGIN COM GITHUB -------------------------------------------------- */
 /* Ou */
