@@ -1,0 +1,9 @@
+/* ESTILIZAÇÃO GERAL (TODAS AS PÁGINAS) ------------------------------ */
+
+* {
+	background-color: #fff;
+	font-family: 'Roboto', sans-serif;
+	margin: 0;
+  	padding: 0;
+  	box-sizing: border-box;
+}

@@ -1,0 +1,159 @@
+/* ESTILIZAÇÃO GERAL ------------------------------------------------- */
+@import '../GlobalStyle.css';
+
+#search-page-text {
+    color: #18191F;
+    font-size: 30px;
+    font-weight: 800;
+}
+
+#search-page-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 800px;
+    margin: 0 auto;
+    height: 100vh;
+}
+
+
+/* PESQUISA ---------------------------------------------------------- */
+/* Container com a barra e botão de pesquisa */
+#input-button-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+/* Input da barra de pesquisa */
+#search-input {
+    width: 530px;
+    border: 1px solid #18191F;
+    border-radius: 10px;
+    padding: 9px;
+    font-size: 16px;
+}
+
+#search-input::placeholder {
+    color: #D1D5DB;
+}
+
+/* Botão de pesquisa */
+#search-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #D1D5DB;
+    color: #fff;
+    font-size: 18px;
+    border: 1px solid #18191F;
+    border-radius: 12px;
+    padding: 10px 16px;
+    cursor: pointer;
+}
+
+#search-button:hover {
+    background-color: #09BC8A;
+}
+
+#search-button svg {
+    background-color: #D1D5DB;
+    color: #fff;
+}
+
+#search-button:hover svg {
+    background-color: #09BC8A;
+}
+
+/* Sugestões de usuário */
+#suggestion-container {
+    position: fixed;
+    width: 30%;
+    margin-top: -5px;
+}
+
+.suggestions-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 5px 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    max-height: 200px;
+    overflow-y: auto;
+    position: absolute;
+    width: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.suggestions-list li {
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; 
+    color: #a4a4a4;
+}
+
+.suggestions-list li:hover {
+    background-color: #f0f0f0;
+}
+
+.suggestions-list li:active {
+    background-color: #e0e0e0;
+}
+
+
+/* LOGIN COM GITHUB -------------------------------------------------- */
+/* Ou */
+hr {
+    height: 5px;
+    background-color: #004346;
+    width: 80%;
+}
+
+/* Container de login com GitHub */
+#alternative-login {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+#alternative-login-text {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Botão de login com GitHub */
+#github-login-button {
+    background-color: #172A3A;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    cursor: pointer;
+    gap: 7px;
+    font-weight: bold;
+}
+
+#github-login-button:hover {
+    background-color: #09BC8A;
+}
+
+/* Logo do GitHub */
+#github-login-button svg {
+    background-color: #172A3A;
+    color: #fff;
+    font-size: 20px !important;
+}
+
+#github-login-button:hover svg {
+    background-color: #09BC8A;
+    color: #fff;
+}
