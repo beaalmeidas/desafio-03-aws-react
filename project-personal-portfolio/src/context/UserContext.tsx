@@ -2,6 +2,7 @@ import React, { createContext, useState, ReactNode } from 'react';
 
 interface User {
   isOwner: boolean;
+  isEditing: boolean;
   username: string;
   profilePicture: string;
   location: string;
@@ -10,6 +11,8 @@ interface User {
   description: string;
   githubUrl: string;
   linkedinUrl: string;
+  userHistory: string;
+  userDisplayEmail: string;
 }
 
 interface UserContextProps {

@@ -1,35 +1,45 @@
-// PortfolioPresentation.tsx
 import React from 'react';
 import { useUser } from '../context/useUser';
 
+// CSS
+import '../styles/component-styles/PortfolioPresentationStyle.css';
+
+
 const PortfolioPresentation: React.FC = () => {
-  const { user } = useUser();
+	const { user } = useUser();
 
-  if (!user) return <p>Usuário não encontrado</p>;
+	if (!user) return <p>Usuário não encontrado</p>;
 
-  return (
-    <div id='portfolio-presentation-content'>
-      <div id='right-side'>
-        <img id='profile-picture' src={user.profilePicture} alt="Foto do perfil" />
-        <p id='username'>{user.username}</p>
-        <p id='location'>{user.location}</p>
-        <p id='email-address'>{user.email}</p>
-      </div>
+	return (
+		<div id='portfolio-presentation-content'>
+			<div id='left-side'>
+				<img id='profile-picture' src={user.profilePicture} alt="Foto do perfil" />
+				<p id='username'>{user.username}</p>
+				<p id='location'>{user.location}</p>
+				<p id='email-address'>{user.email}</p>
+			</div>
 
-      <div id='left-side'>
-        <p id='display-name'>{user.displayName}</p>
-        <p id='description'>{user.description}</p>
+			<div id='right-side'>
+				<div id="intro-text">
+					<p>Hello, </p>
+					<p>
+						I'm <span id="display-name">{user.displayName}</span>
+					</p>
+				</div>
+				<p id='description'>{user.description}</p>
 
-        <button>
-          <a href={user.githubUrl} target="_blank" rel="noopener noreferrer">GitHub</a>
-        </button>
-        
-        <button>
-          <a href={user.linkedinUrl} target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        </button>
-      </div>
-    </div>
-  );
+				<div id="right-side-buttons">
+					<button className="portfolio-button">
+						<a href={user.githubUrl} target="_blank" rel="noopener noreferrer">GitHub</a>
+					</button>
+					
+					<button className="portfolio-button">
+						<a href={user.linkedinUrl} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+					</button>
+				</div>
+			</div>
+		</div>
+	);
 };
 
 export default PortfolioPresentation;

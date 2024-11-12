@@ -47,6 +47,7 @@ const SearchForm: React.FC<SearchFormProps> = ({ placeholder = "Digite o nome do
 
       const githubData = {
 		isOwner: true,
+		isEditing: false,
 		username: githubUserData.login,
         profilePicture: user.photoURL || "",
         location: githubUserData?.location || "Localização não disponível",
@@ -55,6 +56,8 @@ const SearchForm: React.FC<SearchFormProps> = ({ placeholder = "Digite o nome do
         description: githubUserData?.bio || "Bio não disponível", // Usa a bio do GitHub, se disponível
         githubUrl: `https://github.com/${githubUserData.login}`, // Link direto para o perfil
         linkedinUrl: "https://www.linkedin.com/in/username", // Exemplo, modifique se necessário
+		userHistory: "Não há uma história escrita.",
+		userDisplayEmail: "Não há um endereço de email fornecido.",
       };
 
 	  console.log(user); //firebase
@@ -90,7 +93,8 @@ const SearchForm: React.FC<SearchFormProps> = ({ placeholder = "Digite o nome do
 		const githubUserData = await githubUserByUsername(githubDataByUsername);
   
 		const githubData = {
-		  isOwner: true,
+		  isOwner: false,
+		  isEditing: false,
 		  username: githubUserData.login,
 		  profilePicture: githubUserData.avatar_url || "",
 		  location: githubUserData?.location || "Localização não disponível",
@@ -99,6 +103,8 @@ const SearchForm: React.FC<SearchFormProps> = ({ placeholder = "Digite o nome do
 		  description: githubUserData?.bio || "Bio não disponível",
 		  githubUrl: `https://github.com/${githubUserData.login}`,
 		  linkedinUrl: "https://www.linkedin.com/in/username",
+		  userHistory: "Não há uma história escrita.",
+			userDisplayEmail: "Não há um endereço de email fornecido.",
 		};
   
 		console.log(githubUserData);

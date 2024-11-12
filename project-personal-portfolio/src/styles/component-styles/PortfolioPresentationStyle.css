@@ -1,3 +1,115 @@
+/* ESTILIZAÇÃO GERAL ------------------------------------------------- */
+#portfolio-presentation-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    margin-top: 150px;
+    padding: 20px;
+}
+
+#right-side, #left-side {
+    flex: 1;
+}
+
+
+/* LADO ESQUERDO ----------------------------------------------------- */
+#left-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
 #profile-picture {
-    
+    width: 350px;
+    height: 350px;
+    border: 2px solid #172A3A;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+    box-shadow: 8px 0px 0px 0px #172A3A;
+}
+
+#username, #location, #email-address {
+    margin: 5px 0;
+}
+
+#username {
+    font-size: 50px;
+    font-weight: bold;
+}
+
+#location, #email-address {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+
+/* LADO DIREITO ------------------------------------------------------ */
+#right-side {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Saudações e Descrição */
+#intro-text {
+    color: black;
+    font-size: 50px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#intro-text p {
+    margin: 0;
+    line-height: 1.2;
+}
+
+#display-name {
+    color: #09BC8A;
+}
+
+#description {
+    font-size: 25px;
+    font-weight: 500;
+    max-width: 480px;
+    width: 100%;
+    line-height: 1.3;
+}
+
+/* Botões */
+#right-side-buttons {
+    display: flex;
+    gap: 25px;
+    margin-top: 15px;
+}
+
+.portfolio-button {
+    background-color: #172A3A;
+    color: white;
+    padding: 12px 40px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 8px 8px 0px 0px #09BC8A;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.portfolio-button a {
+    text-decoration: none;
+    font-size: 25px;
+    font-weight: 500;
+    background-color: transparent;
+    color: white;
+}
+
+.portfolio-button:hover {
+    background-color: #09BC8A;
+    box-shadow: 10px 10px 0px 0px #172A3A;
+}
+
+.portfolio-button a:hover {
+    text-decoration: none;
 }
