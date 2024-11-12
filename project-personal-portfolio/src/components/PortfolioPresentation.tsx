@@ -11,12 +11,13 @@ const PortfolioPresentation: React.FC = () => {
     <div id='portfolio-presentation-content'>
       <div id='right-side'>
         <img id='profile-picture' src={user.profilePicture} alt="Foto do perfil" />
+        <p id='username'>{user.username}</p>
         <p id='location'>{user.location}</p>
         <p id='email-address'>{user.email}</p>
       </div>
 
       <div id='left-side'>
-        <p id='introduction'>{user.introduction}</p>
+        <p id='display-name'>{user.displayName}</p>
         <p id='description'>{user.description}</p>
 
         <button>

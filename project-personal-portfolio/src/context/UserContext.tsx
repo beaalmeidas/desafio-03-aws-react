@@ -1,11 +1,12 @@
-// UserContext.tsx
 import React, { createContext, useState, ReactNode } from 'react';
 
 interface User {
+  isOwner: boolean;
+  username: string;
   profilePicture: string;
   location: string;
   email: string;
-  introduction: string;
+  displayName: string;
   description: string;
   githubUrl: string;
   linkedinUrl: string;

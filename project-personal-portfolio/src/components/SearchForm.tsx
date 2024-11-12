@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import { FaArrowRight } from "react-icons/fa6";
 import { TbBrandGithubFilled } from "react-icons/tb";
@@ -10,10 +11,9 @@ import '../styles/component-styles/SearchFormStyle.css';
 
 interface SearchFormProps {
   placeholder?: string;
-  searchFunction: (query: string) => void;
 }
 
-const SearchForm: React.FC<SearchFormProps> = ({ placeholder = "Digite o nome do usuário", searchFunction }) => {
+const SearchForm: React.FC<SearchFormProps> = ({ placeholder = "Digite o nome do usuário"}) => {
   const [query, setQuery] = useState('');
   const { setUser } = useUser();
   const navigate = useNavigate();
@@ -23,7 +23,17 @@ const SearchForm: React.FC<SearchFormProps> = ({ placeholder = "Digite o nome do
   };
 
   const handleSearch = () => {
-    searchFunction(query);
+	searchByGitHubUsername(query);
+  };
+
+  const githubUserById = async (account_id: string) => {
+    try {
+      const response = await axios.get(`https://api.github.com/user/${account_id}`);
+      return response.data; // Retorna os dados do usuário do GitHub
+    } catch (error) {
+      console.error("Erro ao buscar dados do GitHub:", error);
+      return null; // Retorna null em caso de erro
+    }
   };
 
   const handleGitHubLogin = async () => {
@@ -31,18 +41,27 @@ const SearchForm: React.FC<SearchFormProps> = ({ placeholder = "Digite o nome do
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
 
+      // Obtém o username do GitHub através do uid do provedor, que é o nome de usuário correto
+      const githubUsername = user.providerData[0].uid;
+      const githubUserData = await githubUserById(githubUsername);
+
       const githubData = {
+		isOwner: true,
+		username: githubUserData.login,
         profilePicture: user.photoURL || "",
-        location: "Localização Exemplo",
-        email: user.email || "",
-        introduction: `Bem-vindo, ${user.displayName}!`,
-        description: "Esta é a descrição do usuário.",
-        githubUrl: user.providerData[0].uid,
-        linkedinUrl: "https://www.linkedin.com/in/username",
+        location: githubUserData?.location || "Localização não disponível",
+        email: user.email || "E-mail não disponível",
+		displayName: user.displayName || "Nome não disponível",
+        description: githubUserData?.bio || "Bio não disponível", // Usa a bio do GitHub, se disponível
+        githubUrl: `https://github.com/${githubUserData.login}`, // Link direto para o perfil
+        linkedinUrl: "https://www.linkedin.com/in/username", // Exemplo, modifique se necessário
       };
 
-      setUser(githubData);
+	  console.log(user); //firebase
+	  console.log(githubUserData);
+	  console.log(user.providerData); //uid
 
+      setUser(githubData);
       localStorage.setItem('user', JSON.stringify(githubData));
 
       toast.success("Login com GitHub realizado com sucesso!");
@@ -52,10 +71,51 @@ const SearchForm: React.FC<SearchFormProps> = ({ placeholder = "Digite o nome do
       }, 2000);
     } catch (error) {
       console.error("Erro ao logar com o GitHub:", error);
-
       toast.error("Erro ao tentar fazer login com o GitHub. Tente novamente.");
     }
   };
+
+  const githubUserByUsername = async (username: string) => {
+    try {
+      const response = await axios.get(`https://api.github.com/users/${username}`);
+      return response.data; // Retorna os dados do usuário do GitHub
+    } catch (error) {
+      console.error("Erro ao buscar dados do GitHub:", error);
+      return null;
+    }
+  };
+
+  const searchByGitHubUsername = async (githubDataByUsername: string) => {
+	try {
+		const githubUserData = await githubUserByUsername(githubDataByUsername);
+  
+		const githubData = {
+		  isOwner: true,
+		  username: githubUserData.login,
+		  profilePicture: githubUserData.avatar_url || "",
+		  location: githubUserData?.location || "Localização não disponível",
+		  email: githubUserData.email || "E-mail não disponível",
+		  displayName: githubUserData.name || "Nome não disponível",
+		  description: githubUserData?.bio || "Bio não disponível",
+		  githubUrl: `https://github.com/${githubUserData.login}`,
+		  linkedinUrl: "https://www.linkedin.com/in/username",
+		};
+  
+		console.log(githubUserData);
+  
+		setUser(githubData);
+		localStorage.setItem('user', JSON.stringify(githubData));
+  
+		toast.success("Buscando usuário...");
+  
+		setTimeout(() => {
+		  navigate('/portfolio');
+		}, 2000);
+	  } catch (error) {
+		console.error("Erro ao buscar usuário do GitHub:", error);
+		toast.error("Erro ao tentar buscar usuário do GitHub. Tente novamente.");
+	}
+  }
 
   return (
     <div id='search-page-container'>
