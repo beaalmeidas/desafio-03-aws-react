@@ -1,3 +1,4 @@
+/* ESTILIZAÇÃO GERAL ------------------------------------------------- */
 #footer-content {
     display: flex;
     flex-direction: column;
@@ -20,6 +21,8 @@
     font-weight: bold;
 }
 
+
+/* BOTÕES DE REDES SOCIAIS ------------------------------------------- */
 #footer-contact-icons {
     display: flex;
     justify-content: center;
@@ -45,6 +48,8 @@
     transform: scale(1.1);
 }
 
+
+/* LOCALIZAÇÃO E COPYRIGHT ------------------------------------------- */
 #footer-bottom {
     display: flex;
     align-items: center;
