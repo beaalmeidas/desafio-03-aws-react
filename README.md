@@ -31,7 +31,7 @@ Por causa de restrições de tempo, alguns objetivos não foram alcançados:
 #### AWS EC2
 O aplicativo está disponível no endereço público da instância EC2. Basta acessar a URL abaixo:
 
-[http://seu-endereco-ip](http://seu-endereco-ip)
+[3.17.129.142](3.17.129.142)
 
 Não é necessário configurar nada localmente para visualizar o aplicativo, pois ele já está rodando no ambiente da AWS EC2.
 Caso você deseje rodar o aplicativo localmente para desenvolvimento, siga as etapas abaixo:
@@ -39,7 +39,7 @@ Caso você deseje rodar o aplicativo localmente para desenvolvimento, siga as et
 **EN:**
 The application is available at the public IP address of the EC2 instance. Simply access the URL below:
 
-[http://your-ip-address](http://your-ip-address)
+[3.17.129.142](3.17.129.142)
 
 No local setup is required to view the application, as it is already running in the AWS EC2 environment.
 If you would like to run the application locally for development purposes, follow the steps below:
