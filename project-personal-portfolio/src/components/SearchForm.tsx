@@ -16,13 +16,18 @@ import { FaUser } from "react-icons/fa";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+interface SuggestionUser {
+    id: number;
+    login: string;
+}
+
 interface SearchFormProps {
     placeholder?: string;
 }
 
 const SearchForm: React.FC<SearchFormProps> = ({ placeholder = "Digite o nome do usuário" }) => {
     const [query, setQuery] = useState('');
-    const [suggestions, setSuggestions] = useState([]);
+    const [suggestions, setSuggestions] = useState<SuggestionUser[]>([]);
     const { setUser } = useUser();
     const navigate = useNavigate();
 
