@@ -2,16 +2,11 @@ import React from 'react';
 import SearchForm from '../components/SearchForm';
 
 const SearchPage: React.FC = () => {
-    const handleSearch = (query: string) => {
-        console.log("Buscando por:", query);
-        
-    };
-
-    return (
-        <div id='search-page-content'>
-            <SearchForm searchFunction={handleSearch} />
-        </div>
-    );
+	return (
+		<div id='search-page-content'>
+			<SearchForm />
+		</div>
+	);
 };
 
 export default SearchPage;

@@ -1,5 +1,8 @@
 import React from 'react';
 
+// CSS
+import '../styles/component-styles/FooterStyle.css';
+
 // Ícones
 import { FaLocationDot } from "react-icons/fa6";
 import instagramLogoColor from '../assets/instagram-logo-color.svg';
@@ -12,12 +15,15 @@ import youtubeLogoColor from '../assets/youtube-logo-color.svg';
 import youtubeLogoBlack from '../assets/youtube-logo-black.svg';
 
 
-const MyHistory: React.FC = () => {
+const Footer: React.FC = () => {
+
+    // LOGOS COLORIDAS
     const changeLogo = (event: React.MouseEvent<HTMLImageElement>, hoverSrc: string) => {
         const img = event.currentTarget as HTMLImageElement;
         img.src = hoverSrc;
     };
-
+    
+    // LOGOS MONOCROMÁTICAS
     const resetLogo = (event: React.MouseEvent<HTMLImageElement>, originalSrc: string) => {
         const img = event.currentTarget as HTMLImageElement;
         img.src = originalSrc;
@@ -69,6 +75,7 @@ const MyHistory: React.FC = () => {
 
             <div id="footer-bottom">
                 <FaLocationDot />
+                <p>Brasil</p>
                 <p>&copy; 2024, All Rights By Compass UOL</p>
             </div>
         </div>
@@ -76,4 +83,4 @@ const MyHistory: React.FC = () => {
 };
 
 
-export default MyHistory;
+export default Footer;

@@ -1,11 +1,5 @@
 /* ESTILIZAÇÃO GERAL (TODAS AS PÁGINAS) ------------------------------ */
 
-/*
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-*/
-
 * {
 	background-color: #fff;
 	font-family: 'Roboto', sans-serif;

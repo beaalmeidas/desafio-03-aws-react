@@ -1,0 +1,72 @@
+/* ESTILIZAÇÃO GERAL ------------------------------------------------- */
+#footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: #fff;
+    padding: 20px;
+}
+
+#footer-top {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+#footer-top p {
+    max-width: 700px;
+    margin: 0 auto 15px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+
+/* BOTÕES DE REDES SOCIAIS ------------------------------------------- */
+#footer-contact-icons {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    gap: 20px;
+}
+
+.social-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.social-button img {
+    width: 60px;
+    height: 60px;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.social-button:hover img {
+    opacity: 0.8;
+    transform: scale(1.1);
+}
+
+
+/* LOCALIZAÇÃO E COPYRIGHT ------------------------------------------- */
+#footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 45px;
+    font-size: 0.9rem;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+#footer-bottom p {
+    margin: 0;
+    font-weight: 500;
+}
+
+#footer-bottom svg {
+    color: #18191F;
+    font-size: 18px;
+    margin-right: -40px;
+}
