@@ -19,11 +19,12 @@ const Header: React.FC = () => {
         <div id='header-editing-container'>
             {/* HEADER */}
             <header id="header-container">
+                {/* NAVEGAÇÃO */}
                 <nav id="navigation">
                     <ul>
-                        <li><a href="#home">Início</a></li>
-                        <li><a href="#about">Minha história</a></li>
-                        <li><a href="#experiences">Experiências</a></li>
+                        <li><a href="#portfolio-presentation-content">Início</a></li>
+                        <li><a href="my-history-content">Minha história</a></li>
+                        <li><a href="#experience-content">Experiências</a></li>
                         <li><a href="#contact">Contato</a></li>
                     </ul>
                 </nav>
@@ -51,7 +52,6 @@ const Header: React.FC = () => {
                     </button>
                 </div>
             )}
-
         </div>
     );
 };
