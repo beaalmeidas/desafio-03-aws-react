@@ -16,11 +16,14 @@ import youtubeLogoBlack from '../assets/youtube-logo-black.svg';
 
 
 const Footer: React.FC = () => {
+
+    // LOGOS COLORIDAS
     const changeLogo = (event: React.MouseEvent<HTMLImageElement>, hoverSrc: string) => {
         const img = event.currentTarget as HTMLImageElement;
         img.src = hoverSrc;
     };
-
+    
+    // LOGOS MONOCROMÁTICAS
     const resetLogo = (event: React.MouseEvent<HTMLImageElement>, originalSrc: string) => {
         const img = event.currentTarget as HTMLImageElement;
         img.src = originalSrc;

@@ -12,6 +12,7 @@ const PortfolioPresentation: React.FC = () => {
 
 	return (
 		<div id='portfolio-presentation-content'>
+			{/* FOTO, NOME DE USUÁRIO, LOCALIZAÇÃO E EMAIL */}
 			<div id='left-side'>
 				<img id='profile-picture' src={user.profilePicture} alt="Foto do perfil" />
 				<p id='username'>{user.username}</p>
@@ -19,6 +20,7 @@ const PortfolioPresentation: React.FC = () => {
 				<p id='email-address'>{user.email}</p>
 			</div>
 
+			{/* INTRODUÇÃO, DESCRIÇÃO, BOTÕES */}
 			<div id='right-side'>
 				<div id="intro-text">
 					<p>Hello, </p>
